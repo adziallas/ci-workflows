@@ -1,0 +1,12 @@
+# ... (am Anfang der Funktion)
+echo "Content-type: text/html"
+echo ""
+echo "<html><head><title>Termin Dashboard</title><style>body{font-family:sans-serif;} table{width:100%; border-collapse:collapse;} th,td{border:1px solid #ddd; padding:8px; text-align:left;} .done{text-decoration:line-through; color:green;} .open{color:blue;} .postponed{color:orange;}</style></head><body>"
+echo "<h1>Ihre Termine</h1>"
+echo "<table><thead><tr><th>ID</th><th>Status</th><th>Ersteller</th><th>Datum/Uhrzeit</th><th>Beschreibung</th></tr></thead><tbody>"
+# ... (in der Schleife für jede Aufgabe)
+local css_class=""
+case "$status" in "DONE") css_class="done";; "OPEN") css_class="open";; "POSTPONED") css_class="postponed";; esac
+echo "<tr class=\"$css_class\"><td>$id</td><td>$display_status</td><td>$creator</td><td>$datetime</td><td>$description</td></tr>"
+# ... (am Ende der Funktion)
+echo "</tbody></table></body></html>"

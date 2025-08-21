@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'YOUR_GIT_REPOSITORY_URL' // Ersetzen Sie dies durch die URL Ihres Git-Repositorys
+            }
+        }
+
+        stage('Build and Install Dependencies') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+
+        stage('Deploy to Develop') {
+            when {
+                branch 'develop'
+            }
+            steps {
+                echo 'Deploying to develop branch...'
+                // Fügen Sie hier Ihre Deployment-Schritte für den Develop-Branch hinzu
+            }
+        }
+    }
+}

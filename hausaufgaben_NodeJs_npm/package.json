@@ -1,0 +1,10 @@
+{
+  "name": "mein-projekt",
+  "version": "1.0.0",
+  "description": "Eine kurze Beschreibung deines Projekts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Führe Tests aus...\"",
+    "clean": "rm -rf dist"
+  },
+  
