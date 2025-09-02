@@ -1,0 +1,17 @@
+
+<properties>
+  <java.version>17</java.version>
+</properties>
+
+<build>
+  <plugins>
+    <plugin>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <version>3.10.1</version>
+      <configuration>
+        <source>${java.version}</source>
+        <target>${java.version}</target>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>

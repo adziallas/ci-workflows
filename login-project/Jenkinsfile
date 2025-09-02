@@ -1,0 +1,27 @@
+pipeline{
+    agent any
+    stages {
+        stage('Test') {
+            steps {
+                // Führe Test mit pytest aus
+                sh 'pytest > result.log; tail -n 10 result.log'
+            }
+        }
+        stage('Build') {
+            steps {
+                // Baue das Projekt und erstelle ein Zip-Archiv
+                sh 'zip -r login-project.zip app.py test_app.py secrets.yaml'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // Simulation der Auslieferung
+                sh 'mv login-project.zip /path/to/deployment/directory/'
+            }
+        }
+    }
+}
+
+   environment {
+        CREDENTIALS = credentials('my-credentials-id')
+    }
